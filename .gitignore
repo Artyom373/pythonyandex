@@ -161,4 +161,4 @@ cython_debug/
 #.idea/
 
 # My file
-config.py
+settings/api_config.py

@@ -1,0 +1,2 @@
+source /Users/artyom/PycharmProjects/pythonyandex/OTIS/bin/python/Applications/PyCharm.app/Contents/plugins/python/helpers/packaging_tool.py install docker-compose
+/Users/artyom/PycharmProjects/pythonyandex/OTIS/bin/python /Applications/PyCharm.app/Contents/plugins/python/helpers/packaging_tool.py install docker-compose
