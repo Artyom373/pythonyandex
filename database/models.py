@@ -70,11 +70,23 @@ class Child(Base):
     def __repr__(self):
         return f'От {self.name}'
 
-Session = sessionmaker(bind=engine)
-session = Session()
-# Прокидывем соедиенение в sessionmaker
-session.add(Book(title='Робинзон Крузо', author="Даниэль Дэфо")) #Создаем книгу 1
+# Заполняем базу данными
 
+# Session = sessionmaker(bind=engine)
+# session = Session()
+# # Прокидывем соедиенение в sessionmaker
+
+# session.add(Book(title='Робинзон Крузо', author="Даниэль Дэфо")) #Создаем книгу 1
+# session.add(Book(title="Путешествие к центру земли", author="Жуль Верн"))  #Создаем книгу 2
+# session.add(User(name="user1")) #Создаем пользователя 1
+# session.add(User(name="user2")) #Создаем пользователя 2
+# session.add(Reviews(text="Замечательная книга о приключении Робинзона на острове", book_id=1, user_id=1))
+# #Отзыв о книге 1 от пользователя 1
+# session.add(Reviews(text="Жуль Верн на высоте", book_id=2, user_id=2))
+# #Отзыв о книге 2 от пользователя 2
+# session.add(Reviews(text="Мне не понравилось", book_id=1, user_id=2))
+# #Отзыв о книге 1 от пользователя 2
+# session.commit()
 
 Base.metadata.create_all(engine)
 # проверка таблиц
