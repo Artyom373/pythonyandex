@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, create_engine, Table
+from sqlalchemy import Column, ForeignKey, Integer, String, create_engine, Table, select
 # from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
 from settings import api_config
@@ -88,9 +88,32 @@ class Child(Base):
 # #Отзыв о книге 1 от пользователя 2
 # session.commit()
 
+#Ищем книгу Робинзон Крузо
+Session = sessionmaker(bind=engine)
+session = Session()
+stmt = select(Book).where(Book.title=="Робинзон Крузо")
+for book in session.scalars(stmt):
+    print(book)
+
+# # FROM books
+# # WHERE books.title = %(title_1)s
+# #2023-09-04 08:52:12,689 INFO sqlalchemy.engine.Engine [generated in 0.00009s] {'title_1': 'Робинзон Крузо'}
+# #Робинзон Крузо
+
+#Ищем книгу Робинзон Крузо
+# Session = sessionmaker(bind=engine)
+# session = Session()
+# stmt = select(Book).where(Book.title=="Робинзон Крузо")
+# for book in session.scalars(stmt):
+#     print(book, book.reviews, book.reviews[0].text)
+# FROM users
+# WHERE users.id = %(pk_1)s
+# 2023-09-05 20:25:09,057 INFO sqlalchemy.engine.Engine [cached since 0.001337s ago] {'pk_1': 2}
+# [От user1, От user2] Замечательная книга о приключении Робинзона на острове
+
+
 Base.metadata.create_all(engine)
 # проверка таблиц
-
 
 # book1 = session.query(Book).filter_by(title="Робинзон Крузо").first()
 # user1 = session.query(User).filter_by(name="user1").first()
