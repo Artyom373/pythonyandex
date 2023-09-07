@@ -111,6 +111,21 @@ for book in session.scalars(stmt):
 # 2023-09-05 20:25:09,057 INFO sqlalchemy.engine.Engine [cached since 0.001337s ago] {'pk_1': 2}
 # [От user1, От user2] Замечательная книга о приключении Робинзона на острове
 
+# Добавляем читателей к книгам
+Session = sessionmaker(bind=engine)
+session = Session()
+book1 = session.query(Book).filter_by(title="Робинзон Крузо").first()
+book2 = session.query(Book).filter_by(title="Путешествие к центру земли").first()
+user1 = session.query(User).filter_by(name="user1").first()
+user2 = session.query(User).filter_by(name="user2").first()
+# book1.readers.append(user1)
+# book1.readers.append(user2)
+# book2.readers.append(user1)
+# book2.readers.append(user2)
+# session.commit()
+
+
+
 
 Base.metadata.create_all(engine)
 # проверка таблиц
