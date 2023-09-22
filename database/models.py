@@ -31,6 +31,7 @@ class Book(Base):
     reviews = relationship('Reviews', backref='book', lazy=True)
     # с помощью функции relationship мы связываем нашу таблицу book c reviews
     readers = relationship('User', secondary=association_teble, back_populates='books', lazy=True)
+    film = relationship('Film', back_populates='book', uselist=False, lazy=True)
 
 
     def __repr__(self):
@@ -55,6 +56,13 @@ class User(Base):
 
     def  __repr__(self):
         return self.name
+
+class Film(Base):
+    __tablename__ = "films"
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+
+
 
 class Parent(Base):
     __tablename__ = 'parent'
